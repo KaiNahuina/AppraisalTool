@@ -1,0 +1,54 @@
+.navigation {
+  background-color: #cdcdcd;
+  overflow: hidden;
+}
+
+.navbar {
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.navbar-default .navbar-nav > li{
+  height: 30px;
+  align-items: center;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #000000;
+  text-decoration: none;
+
+}
+
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  background-color: #6b6b6b;
+  color: #c4c4c4;
+}
+
+
+.navbar li {
+  color: #000000;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  list-style: none;
+  margin: 0;
+  display: inline-block;
+}
+
+.navbar li:hover {
+  background-color: #6b6b6b;
+  color: #c4c4c4;
+}
+
+.navbar .CedaTex img{
+  max-height: 40px;
+}
+
+.navbar .CedaTex:hover {
+  background-color: transparent; /* Set the background color to transparent */
+  color: inherit; /* Inherit the color property */
+}
