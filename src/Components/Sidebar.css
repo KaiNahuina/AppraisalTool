@@ -18,7 +18,8 @@
 .navbar-default .navbar-nav > li > a {
   color: #000000;
   text-decoration: none;
-
+  display: flex; /* Ensure proper alignment for text content */
+  align-items: center;
 }
 
 .navbar-default .navbar-nav > li > a:hover,
@@ -44,8 +45,10 @@
   color: #c4c4c4;
 }
 
-.navbar .CedaTex img{
+.navbar .CedaTex img {
   max-height: 40px;
+  vertical-align: middle; /* Add this line */
+  margin-right: 8px;
 }
 
 .navbar .CedaTex:hover {
