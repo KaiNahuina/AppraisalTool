@@ -14,17 +14,17 @@ function Sidebar() {
                             <img class="navbar-brand" src={Logo}/>
                           </li>
                           <li>
-                              <Link to="">
+                              <Link to="/home">
                               <ion-icon name="home">Home</ion-icon>
                               </Link>
                           </li>
                           <li>
-                              <Link to="">
-                              <ion-icon name="file-tray-full">Projects</ion-icon>
+                              <Link to="/myprojects">
+                              <ion-icon name="file-tray-full">My Projects</ion-icon>
                               </Link>
                           </li>
                           <li>
-                              <Link to="">
+                              <Link to="/profile">
                               <ion-icon name="person">Profile</ion-icon>
                               </Link>
                           </li>

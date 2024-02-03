@@ -12,9 +12,12 @@
 }
 
 .redBox {
-  background-color: #ff0000; /* Red background color */
+  background-color: #ff0038; /* Red background color */
   border: 2px solid #000000; /* Black border */
   padding: 20px; /* Adjust padding */
   margin: 20px; /* Adjust margin */
   color: #ffffff; /* Text color */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  /* max-width: fit-content; */
 }
