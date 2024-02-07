@@ -22,12 +22,25 @@
   /* max-width: fit-content; */
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto; /* Two columns instead of three */
-  gap: 10px;
+.columnTitle{
+  color:#000000;
 }
-.grid-item {
-  padding: 10px;
-  border: 1px solid #ccc;
+.table{
+  width: 75%;
+}
+
+.cell {
+  border: 1px solid white; /* Add border around cell */
+  background-color: #000000;
+  padding: 5px; /* Add padding to cell content */
+  text-align: center; /* Center text horizontally */
+  margin: 10 0px;
+ 
+}
+
+th {
+  /* Add border around table headers */
+  padding: 5px; /* Add padding to table headers */
+  text-align: center; /* Center text horizontally */
+  
 }
