@@ -35,6 +35,7 @@
   padding: 5px; /* Add padding to cell content */
   text-align: center; /* Center text horizontally */
   margin: 10 0px;
+  border-radius: 10px;
  
 }
 
