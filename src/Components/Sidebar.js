@@ -11,7 +11,7 @@ function Sidebar() {
               <div className='container-fluid'>
                   <ul className="nav navbar-nav">
                           <li className='CedaTex'>
-                            <img class="navbar-brand" src={Logo}/>
+                            <img className="navbar-brand" src={Logo}/>
                           </li>
                           <li>
                               <Link to="/home">

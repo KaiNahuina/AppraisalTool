@@ -18,7 +18,7 @@ function App() {
         <h1>This is the material</h1>
         <div className="redBox">
           {/* Content specific to each page goes here */}
-          <h2>Page Title</h2>
+          
           <Routes>
             <Route path="/Home" element={<Home/>} />
             <Route path="/MyProjects" element={<MyProjects/>} />
