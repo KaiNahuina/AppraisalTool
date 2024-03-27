@@ -1,9 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Home.css';
 import Notesbox from './Components/Notesbox';
 import Rating from './Components/Rating';
+import Chart from './Components/Chart'
 
 function Home() {
+  const [selectedValues, setSelectedValues] = useState({
+    TeamSize: '',
+    GeographicDistribution: '',
+    OrganizationalDistribution: '',
+    SkillAvailability: '',
+    Compliance: '',
+    SolutionComplexity: '',
+    DomainComplexity: ''
+  });
+
   useEffect(() => {
     // Mapping of dropdown values to designated values for the third column
     const designatedValues = {
@@ -65,6 +76,11 @@ function Home() {
         const selectedValue = this.value;
         const designatedValue = designatedValues[dropdownId][selectedValue];
         document.getElementById(displayId).textContent = designatedValue;
+
+        setSelectedValues(prevState => ({
+          ...prevState,
+          [dropdownId]: designatedValue
+        }));
       };
     };
 
@@ -95,9 +111,17 @@ function Home() {
   });
   }, []);
 
+  //Graph Visibility
+  const [showGraph, setShowGraph] = useState(false);
+
+  const toggleGraph = () => {
+    setShowGraph(!showGraph);
+  };
+
 
   return (
-    <div className="tool-container">
+    <div>
+    <div className="tool-container" style={{display: 'block'}}>
       <div className="grid-container" style={{ display: 'flex', flexDirection: 'row' }}>
         <div className="grid-column" style={{ margin: '20px'}}>
           <table>
@@ -224,19 +248,29 @@ function Home() {
             <Rating />
           </div>
           <div className="button-wrapper">
-            <button className="button-4 button-5">Breakdown</button>
+            <button className="button-4 button-5">Save</button>
             <br/>
-            <button className="button-4">Calculate</button>
+            <button className="button-4" onClick={toggleGraph}>Calculate</button>
             <br/>
             <button className="button-4">New Price</button>
             <div className="project-notes">
               <Notesbox />
             </div>
           </div>
+
         </div>
         
       </div>
+      
     </div>
+    <div className="grid-container" style={{ display: 'flex', flexDirection: 'row',  justifyContent: 'center'}}>
+      <div className="grid-column" >
+        <div id="radar-chart">
+          {showGraph && <Chart selectedValues={selectedValues}/>}
+        </div>
+      </div>
+  </div>
+  </div>
   )
 }
 
