@@ -1,0 +1,9 @@
+.notebox{
+    border-radius: 10px;
+    height: auto;
+    min-height: 40px;
+    width: 190px;
+    padding: 5px;
+    box-sizing: border-box;
+    
+}

@@ -1,0 +1,17 @@
+/* Rating.css */
+.rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.face {
+    font-size: 30px;
+}
+
+.label {
+    font-size: 13px;
+    margin-top: 5px;
+    font-weight: bold;
+}
+

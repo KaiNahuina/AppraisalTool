@@ -2,22 +2,30 @@
   background-color: #dddddd;
   margin: 0;
   height: 100vh;
+  
 }
 
 .App-body {
-  display: flex;
-  flex-direction: column;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(10px + 1vmin);
   color: rgb(0, 0, 0);
+  max-width: 1000px;
+  height: 430px;
+  justify-content: center;
+  align-items: center;
 }
 
 .redBox {
-  background-color: #ff0038; /* Red background color */
-  border: 2px solid #000000; /* Black border */
-  padding: 20px; /* Adjust padding */
-  margin: 20px; /* Adjust margin */
-  color: #ffffff; /* Text color */
+  background-color: #ff0038; 
+  border: 2px solid #000000; 
+  color: #ffffff;
+  padding: 0px; 
+  margin: 20px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
   border-radius: 10px;
-  /* max-width: fit-content; */
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+
 }
+

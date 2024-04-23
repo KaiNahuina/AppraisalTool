@@ -1,0 +1,146 @@
+.tool-container{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    padding: 0;
+    width: 100%;
+
+}
+
+.grid-container {
+    flex: 1;
+    margin: 20px;
+    width:100%;
+  }
+ 
+  .vertical-line {
+    border-left: 2px solid black;
+    height: 376; /* Adjust height as needed */
+    margin: 20px;
+  }
+  
+  .button-column {
+    margin: 20px; 
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .button-wrapper {
+    position: absolute;
+    top: 200px; /* Adjust as needed */
+    margin-left: 0;
+    
+  }
+  
+  
+  .columnTitle{
+    color:#000000;
+  }
+ .table{
+    width: 75%;
+  }
+  
+  .cell {
+    border: 1px solid white; /* Add border around cell */
+    background-color: #000000;
+    padding: 5px; /* Add padding to cell content */
+    text-align: center; /* Center text horizontally */
+    margin: 10px;
+    border-radius: 10px;
+   
+  }
+  
+  th {
+    padding: 5px; /* Add padding to table headers */
+    text-align: center; /* Center text horizontally */
+    
+  }
+  
+.dropdown{
+    padding: 5px; /* Adjust padding as needed */
+    font-size: inherit; /* Inherit font size from parent */
+    border: 1px solid #000; /* Add border to match cell border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    background-color: transparent; /* Set background color to transparent */
+    cursor: pointer; /* Show pointer cursor on hover */
+    width: 100%;
+    color: white;
+}
+
+.estimate{
+    position: absolute;
+}
+
+.project-notes{
+    padding: 5px;
+}
+
+
+
+  
+/* Button CSS */
+.button-4 {
+  appearance: none;
+  background-color: #d2d3d3;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  list-style: none;
+  padding: 6px 16px;
+  position: relative;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+  word-wrap: break-word;
+  margin: 2px;
+  width: 190px;
+}
+
+.button-4:hover {
+  background-color: #7e848e;
+  text-decoration: none;
+  transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #bec0c2;
+  cursor: default;
+}
+
+.button-4:active {
+  background-color: #d2d3d3;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+  transition: none 0s;
+}
+
+.button-4:focus {
+  outline: 1px transparent;
+}
+
+.button-4:before {
+  display: none;
+}
+
+.button-4:-webkit-details-marker {
+  display: none;
+}
+
+.button-5{
+    background-color: rgb(46, 194, 38);
+}
+
