@@ -1,104 +1,63 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { Radar } from 'react-chartjs-2';
+import { Chart, radialLinear } from 'chart.js/auto';
+import './Chart.css';
 
-import React, {Component} from 'react'
-import ChartJS from 'chart.js/auto'
+const RadarChart = ({ selectedValues }) => {
+  const chartRef = useRef(null);
 
-class Chart extends Component {
-  constructor(props) {
-    super(props);
-    // Create a ref for the canvas element
-    this.chartRef = React.createRef();
-  }
-
-  componentDidMount() {
-    this.createChart();
-  }
-
-  createChart() {
-    const { selectedValues } = this.props;
-
-    const desiredCategories = [
-      'TeamSize',
-      'GeographicDistribution',
-      'OrganizationalDistribution',
-      'SkillAvailability',
-      'Compliance',
-      'SolutionComplexity',
-      'DomainComplexity'
-    ];
-
-   
-    const labels = Object.keys(selectedValues)
-    // Filter out category names that are not in the desired list
-    .filter(category => desiredCategories.includes(category))
-    // Optionally, you can map the category names to more readable labels if needed
-    .map(category => {
-      switch (category) {
-        case 'TeamSize':
-          return 'Team Size';
-        case 'GeographicDistribution':
-          return 'Geographic Distribution';
-        case 'OrganizationalDistribution':
-          return 'Organizational Distribution';
-        case 'SkillAvailability':
-          return 'Skill Availability';
-        case 'Compliance':
-          return 'Compliance';
-        case 'SolutionComplexity':
-          return 'Solution Complexity';
-        case 'DomainComplexity':
-          return 'Domain Complexity';
-        default:
-          return category;
-      }
-    });
-
-    const data = Object.values(selectedValues);
-
-    const chartConfig = {
-      type: 'radar',
-      data: {
-        labels: labels,
-        datasets: [
-          {
-            labels: 'SelectedValues',
-            data: data,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgba(255, 99, 132, 1)',
-            borderWidth: 1
-          }
-        ]
+  useEffect(() => {
+    
+    // Cleanup function to destroy the previous Chart instance
+    return () => {
+      if (chartRef.current !== null) {
+        chartRef.current.destroy();
       }
     };
-
-    // Check if chartRef has been properly initialized
-    if (this.chartRef.current) {
-      // Get the context of the canvas element
-      const ctx = this.chartRef.current.getContext('2d');
-
-      // Check if a chart instance already exists
-      if (this.chartInstance) {
-        // Destroy the existing chart instance
-        this.chartInstance.destroy();
-      }
-
-      // Create a new chart instance
-      this.chartInstance = new ChartJS(ctx, chartConfig);
-    }
-  }
-
-  render() {
-    return (
-      <div>
-        {/* Attach the ref to the canvas element */}
-        <canvas id="radar-chart" ref={this.chartRef}></canvas>
-      </div>
-    );
-  }
-}
+  }, [selectedValues]);
 
 
-export default Chart
+  const data = Object.values(selectedValues).map(entry => entry.point);
+
+  const chartData = {
+    labels: ['Team Size', 'Geographic Distribution', 'Organizational Distribution', 'Skill Availability', 'Compliance', 'Solution Complexity', 'Domain Complexity'],
+    datasets: [
+      {
+        label: 'Your Selection',
+        data: data,
+        backgroundColor: 'white',
+        borderColor: 'black',
+        borderWidth: 2,
+      },
+    ],
+  };
 
 
+  const chartOptions = {
+    scales: {
+      r: {
+        beginAtZero: true,
+        
+        type: 'radialLinear',
+        // Options for the radial (angular) axis
+        ticks: {
+          
+          1:['Colocated', 'Same Building', 'Same Time Zone','Global'],
+          2:['Global', 'Same Time Zone', 'Same Building', 'Colocated'],
+          3:['10', '25', '100', '250+'],
+          4:['Available Now', 'Available Soon', 'Easy to Acquire', 'Difficult to Acquire'],
+          5:['Informal', 'Internal Oversight', 'External Standards', 'Regulatory Oversight', 'Existential'],
+          6:['New Stand-Alone', 'New Integrated','Legacy', 'Multi-Environment Legacy'],
+          7:['Straightforward', 'Complex', 'Very Complex', 'Rapidly Evolving'],
+        },
+      },
+    },
+  
+  };
 
 
+   return <Radar id="radar-chart" ref={chartRef} data={chartData} options={chartOptions} />;
+
+};
+
+export default RadarChart;
