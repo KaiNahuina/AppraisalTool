@@ -1,123 +1,137 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import './Home.css';
 import Notesbox from './Components/Notesbox';
 import Rating from './Components/Rating';
-import Chart from './Components/Chart'
+import Chart from './Components/Chart';
 
-function Home() {
-  const [selectedValues, setSelectedValues] = useState({
-    TeamSize: '',
-    GeographicDistribution: '',
-    OrganizationalDistribution: '',
-    SkillAvailability: '',
-    Compliance: '',
-    SolutionComplexity: '',
-    DomainComplexity: ''
-  });
+function Home({handleCalculate}) {
+  
+    const [selectedValues, setSelectedValues] = useState({
+      //ProjectTitle:{name: null},
+      TeamSize: { label: null, point: null },
+      GeographicDistribution: { label: null, point: null },
+      OrganizationalDistribution: { label: null, point: null },
+      SkillAvailability: { label: null, point: null },
+      Compliance: { label: null, point: null },
+      SolutionComplexity: { label: null, point: null },
+      DomainComplexity: { label: null, point: null }
+    });
 
-  useEffect(() => {
     // Mapping of dropdown values to designated values for the third column
     const designatedValues = {
       dropdown1: {
-        value1: 'designatedValue1',
-        value2: 'designatedValue2',
-        value3: 'designatedValue3',
-        value4: 'designatedValue4',
-        blank: ''
-
+        value1: { label: 'Colocated', point: 3 },
+        value2: { label: 'Same Building', point: 5 },
+        value3: { label: 'Same Time Zone', point: 7 },
+        value4: { label: 'Global', point: 9 },
+        blank: { label: '', point: 0 },
       },
       dropdown2: {
-        value1: 'designatedValue4',
-        value2: 'designatedValue5',
-        value3: 'designatedValue6',
-        value4: 'designatedValue4',
-        blank: ''
+        value1: { label: 'Global', point: 9 },
+        value2: { label: 'Same Time Zone', point: 7 },
+        value3: { label: 'Same Building', point: 5 },
+        value4: { label: 'Colocated', point: 8 },
+        blank: { label: '', point: 0 },
       },
       dropdown3: {
-        value1: 'designatedValue4',
-        value2: 'designatedValue5',
-        value3: 'designatedValue6',
-        value4: 'designatedValue4',
-        blank: ''
+        value1: { label: '10', point: 6 },
+        value2: { label: '25', point: 3 },
+        value3: { label: '100', point: 2 },
+        value4: { label: '250+', point: 1 },
+        blank: { label: '', point: 0 },
       },
       dropdown4: {
-        value1: 'designatedValue4',
-        value2: 'designatedValue5',
-        value3: 'designatedValue6',
-        value4: 'designatedValue4',
-        blank: ''
+        value1: { label: 'Available Now', point: 1 },
+        value2: { label: 'Available Soon', point: 3 },
+        value3: { label: 'Easy to Acquire', point: 5 },
+        value4: { label: 'Difficult to Acquire', point: 9 },
+        blank: { label: '', point: 0 },
       },
       dropdown5: {
-        value1: 'designatedValue4',
-        value2: 'designatedValue5',
-        value3: 'designatedValue6',
-        value4: 'designatedValue7',
-        value5: 'designatedValue8',
-        blank: ''
+        value1: { label: 'Informal', point: 1 },
+        value2: { label: 'Internal Oversight', point: 3 },
+        value3: { label: 'External Standards', point: 5 },
+        value4: { label: 'Regulatory Oversight', point: 7 },
+        value5: { label: 'Existential', point: 9 },
+        blank: { label: '', point: 0 },
       },
       dropdown6: {
-        value1: 'designatedValue4',
-        value2: 'designatedValue5',
-        value3: 'designatedValue6',
-        value4: 'designatedValue4',
-        blank: ''
+        value1: { label: 'New Stand-Alone', point: 5 },
+        value2: { label: 'New Integrated', point: 6 },
+        value3: { label: 'Legacy', point: 8 },
+        value4: { label: 'Multi-Environment Legacy', point: 9 },
+        blank: { label: '', point: 0 },
       },
       dropdown7: {
-        value1: 'designatedValue4',
-        value2: 'designatedValue5',
-        value3: 'designatedValue6',
-        value4: 'designatedValue4',
-        blank: ''
+        value1: { label: 'Straightforward', point: 1 },
+        value2: { label: 'Complex', point: 3 },
+        value3: { label: 'Very Complex', point: 5 },
+        value4: { label: 'Rapidly Evolving', point: 7 },
+        blank: { label: '', point: 0 },
       },
-      // Add mappings for other dropdowns as needed
     };
-    const handleDropdownChange = (dropdownId, displayId) => {
+
+     // Array of dropdown IDs and corresponding display IDs
+     const dropdowns = [
+      { id: 'dropdown1', displayId: 'display1', title: 'TeamSize' },
+      { id: 'dropdown2', displayId: 'display2', title: 'GeographicDistribution' },
+      { id: 'dropdown3', displayId: 'display3', title: 'OrganizationalDistribution' },
+      { id: 'dropdown4', displayId: 'display4', title: 'SkillAvailability' },
+      { id: 'dropdown5', displayId: 'display5', title: 'Compliance' },
+      { id: 'dropdown6', displayId: 'display6', title: 'SolutionComplexity' },
+      { id: 'dropdown7', displayId: 'display7', title: 'DomainComplexity' }
+    ];
+    
+    const handleDropdownChange = useCallback((id, displayId) => {
       return function() {
         const selectedValue = this.value;
-        const designatedValue = designatedValues[dropdownId][selectedValue];
-        document.getElementById(displayId).textContent = designatedValue;
+        const designatedValue = designatedValues[id][selectedValue];
+        document.getElementById(displayId).textContent = designatedValue.point.toString();
 
-        setSelectedValues(prevState => ({
+        setSelectedValues((prevState) => ({
           ...prevState,
-          [dropdownId]: designatedValue
+          [id]: {
+            label: designatedValue.label, 
+            point: parseInt(designatedValue.point, 10),
+          } 
         }));
+
       };
-    };
+    }, []);
 
-    // Array of dropdown IDs and corresponding display IDs
-    const dropdowns = [
-      { dropdownId: 'dropdown1', displayId: 'display1' },
-      { dropdownId: 'dropdown2', displayId: 'display2' },
-      { dropdownId: 'dropdown3', displayId: 'display3' },
-      { dropdownId: 'dropdown4', displayId: 'display4' },
-      { dropdownId: 'dropdown5', displayId: 'display5' },
-      { dropdownId: 'dropdown6', displayId: 'display6' },
-      { dropdownId: 'dropdown7', displayId: 'display7' }
-    ];
-
-    // Attach event listeners for each dropdown
-    dropdowns.forEach(({ dropdownId, displayId }) => {
-      const dropdown = document.getElementById(dropdownId);
-      const handler = handleDropdownChange(dropdownId, displayId); // Save the reference to the handler
-
-      dropdown.addEventListener('change', handler);
     
+    useEffect(() => {
+  
+    
+    dropdowns.forEach(({ id, displayId }) => {
+      const dropdown = document.getElementById(id);
+      const handler = handleDropdownChange(id, displayId); // Save the reference to the handler
+      dropdown.addEventListener('change', handler);
 
-    // Clean up function to remove event listeners when the component unmounts
+      // Clean up function to remove event listeners when the component unmounts
     return () => {
       dropdown.removeEventListener('change', handler); // Remove the event listener using the same handler
 
     };
-  });
+    });
+
+    
+
   }, []);
 
-  //Graph Visibility
   const [showGraph, setShowGraph] = useState(false);
 
+
   const toggleGraph = () => {
+    handleCalculate();
     setShowGraph(!showGraph);
   };
 
+  
+
+  const saveProject = () => {
+    //Pop-up window asking name to save
+  }
 
   return (
     <div>
@@ -135,7 +149,7 @@ function Home() {
             </thead>
             <tbody>
               <tr>
-                <td className="cell">Team Size</td>
+                <td className="cell" id="TeamSize">Team Size</td>
                 <td className="cell">
                   <select id="dropdown1" className="dropdown">
                     <option value="" hidden></option>
@@ -149,7 +163,7 @@ function Home() {
               </tr>
 
               <tr>
-                  <td className="cell">Geographic Distribution</td>
+                  <td className="cell" id="GeographicDistribution">Geographic Distribution</td>
                   <td className="cell">
                   <select id="dropdown2" className="dropdown">
                     <option value="" hidden></option>
@@ -164,7 +178,7 @@ function Home() {
                 </tr>
 
                 <tr>
-                    <td className="cell">Organizational Distribution</td>
+                    <td className="cell" id="OrganizationalDistribution">Organizational Distribution</td>
                     <td className="cell">
                     <select id="dropdown3" className="dropdown">
                       <option value="" hidden></option>
@@ -178,7 +192,7 @@ function Home() {
                   </tr>
 
                   <tr>
-                      <td className="cell">Skill Availability</td>
+                      <td className="cell" id="SkillAvailability">Skill Availability</td>
                       <td className="cell">
                       <select id="dropdown4" className="dropdown">
                         <option value="" hidden></option>
@@ -192,7 +206,7 @@ function Home() {
                     </tr>
 
                     <tr>
-                      <td className="cell">Compliance</td>
+                      <td className="cell" id="Compliance">Compliance</td>
                       <td className="cell">
                       <select id="dropdown5" className="dropdown">
                         <option value="" hidden></option>
@@ -207,7 +221,7 @@ function Home() {
                     </tr>
 
                     <tr>
-                      <td className="cell">Solution Complexity</td>
+                      <td className="cell" id="SolutionComplexity">Solution Complexity</td>
                       <td className="cell">
                       <select id="dropdown6" className="dropdown">
                         <option value="" hidden></option>
@@ -222,7 +236,7 @@ function Home() {
                     </tr>
 
                     <tr>
-                      <td className="cell">Domain Complexity</td>
+                      <td className="cell" id="DomainComplexity">Domain Complexity</td>
                       <td className="cell">
                       <select id="dropdown7" className="dropdown">
                         <option value="" hidden></option>
@@ -248,7 +262,7 @@ function Home() {
             <Rating />
           </div>
           <div className="button-wrapper">
-            <button className="button-4 button-5">Save</button>
+            <button className="button-4 " style={{backgroundColor: 'rgb(46, 194, 38)'}}>Save</button>
             <br/>
             <button className="button-4" onClick={toggleGraph}>Calculate</button>
             <br/>
@@ -263,15 +277,16 @@ function Home() {
       </div>
       
     </div>
-    <div className="grid-container" style={{ display: 'flex', flexDirection: 'row',  justifyContent: 'center'}}>
-      <div className="grid-column" >
+    <div className="grid-container" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+      <div className="grid-column" style={{ display: 'flex', justifyContent: 'center' }}>
         <div id="radar-chart">
-          {showGraph && <Chart selectedValues={selectedValues}/>}
+          {showGraph && <Chart selectedValues={selectedValues} />}
         </div>
       </div>
   </div>
   </div>
   )
 }
+
 
 export default Home

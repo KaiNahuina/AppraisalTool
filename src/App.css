@@ -1,17 +1,14 @@
 .App {
   background-color: #dddddd;
-  margin: 0;
-  height: 100vh;
-  
 }
 
 .App-body {
   font-size: calc(10px + 1vmin);
+  background-color: #dddddd;
   color: rgb(0, 0, 0);
-  max-width: 1000px;
-  height: 430px;
+  height: 100vh;
+  display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 .redBox {
@@ -19,13 +16,27 @@
   border: 2px solid #000000; 
   color: #ffffff;
   padding: 0px; 
-  margin: 20px; 
+  margin: 30px; 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   box-sizing: border-box;
   border-radius: 10px;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   align-items: center;
   justify-content: center;
+  /*min-height: 480px;*/
+  width: 1000px;
 
 }
 
+.redBox::-webkit-scrollbar {
+  display: none; /* Hide the scrollbar */
+}
+
+.expanded{
+  height: 1120px;
+}
+
+.minimized{
+  height: 480px;
+}
