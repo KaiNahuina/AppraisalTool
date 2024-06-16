@@ -1,0 +1,103 @@
+.alphaContainerBox {
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sideA, .sideB {
+    padding: 3%;
+    height: 100%;
+  }
+  
+  .sideA {
+    background-color: #ff0038; 
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sideB {
+    background-color: white;
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .titleA{
+    color: rgb(255, 255, 255);
+  }
+  
+  .titleB {
+    color: black;
+    font-size: xxx-large;
+  }
+  
+  .subtitleB {
+    color: black;
+    margin-bottom: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  form > div {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    width: 100px;
+    display: inline-block;
+    color: white;
+  }
+  
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+ 
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  button {
+    background-color: rgb(9, 9, 9);
+    color: rgb(255, 255, 255);
+    border: 1px solid black;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px 0;
+    width: 80%;
+  }
+  
+  button:hover {
+    background-color: #9b9b9b;
+  }
+  
+  .loginBtn {
+    margin-bottom: 10px;
+  }
+  
+  .forgotPasswordBtn {
+    margin-top: 0;
+  }
+  
