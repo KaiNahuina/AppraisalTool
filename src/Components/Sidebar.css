@@ -1,57 +1,91 @@
-.navigation {
-  background-color: #cdcdcd;
-  overflow: hidden;
+.navigation{
+  width:100%;
+  box-shadow: 10px 10px 12px 0 rgba(0, 0, 0, 0.07);
 }
+
+.container-fluid {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 
 .navbar {
-  border: none;
+  width: 100%;
+  height: 100px;
+  background-color: #efeeee;
+  box-shadow: 10px 10px 12px 0 rgba(0, 0, 0, 0.07);
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-}
+  padding: 0 3rem;
+  list-style-type: none;
+  margin: 0 auto; /* Add this line */
+  justify-content: center;
 
-.navbar-default .navbar-nav > li{
-  height: 30px;
-  align-items: center;
-}
-
-.navbar-default .navbar-nav > li > a {
-  color: #000000;
-  text-decoration: none;
-  display: flex; /* Ensure proper alignment for text content */
-  align-items: center;
-}
-
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  background-color: #6b6b6b;
-  color: #c4c4c4;
 }
 
 
-.navbar li {
-  color: #000000;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+
+/* Remove the marker (bullet point) from all list items */
+.navbar ul {
   list-style: none;
+  padding: 0;
   margin: 0;
-  display: inline-block;
+  display: flex; /* Add this line */
+  align-items: center; /* Add this line */
 }
 
-.navbar li:hover {
-  background-color: #6b6b6b;
-  color: #c4c4c4;
+.navbar .CedaTex {
+  margin-left: auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  color: dimgray;
+  font-weight: 900;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), -2px -2px 4px rgba(255, 255, 255, 1);
+  padding: 0;
+  height: 37.95px;
 }
 
 .navbar .CedaTex img {
-  max-height: 40px;
-  vertical-align: middle; /* Add this line */
-  margin-right: 8px;
+  height: 37.95px;
 }
 
-.navbar .CedaTex:hover {
-  background-color: transparent; /* Set the background color to transparent */
-  color: inherit; /* Inherit the color property */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Ensure spacing between items */
+}
+
+.navbar-nav li {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 4px 4px 6px 0 rgba(0, 0, 0, 0.1), -4px -4px 6px rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: color 0.2s ease-out, transform 0.2s ease-out;
+  color: dimgray;
+}
+
+.navbar-nav li:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1), -4px -4px 10px rgba(255, 255, 255, 1);
+  color: black;
+}
+
+.navbar-nav li:focus {
+  outline: none;
+  transform: scale(0.95);
+  box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.1), -4px -4px 10px rgba(255, 255, 255, 1), 4px 4px 10px 0 rgba(0, 0, 0, 0.1) inset, -4px -4px 10px rgba(255, 255, 255, 1) inset;
+  color: black;
+}
+
+.navbar-nav li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ion-icon {
+  margin-right: 8px;
 }

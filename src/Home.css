@@ -29,12 +29,18 @@
 
   .button-wrapper {
     position: absolute;
-    top: 200px; /* Adjust as needed */
+    top: 150px; /* Adjust as needed */
     margin-left: 0;
-    
   }
   
+  .notesbox{
+    box-shadow: inset -4px -4px 6px -1px white, inset 2px 2px 8px -1px rgba(72, 79, 96, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0);
+    outline: none;
+    background-color: #EBECF0;
+  }
   
+
   .columnTitle{
     color:#000000;
   }
@@ -44,14 +50,19 @@
   
   .cell {
     border: 1px solid white; /* Add border around cell */
-    background-color: #000000;
-    padding: 5px; /* Add padding to cell content */
+    background-color: #f1f1f1;
     text-align: center; /* Center text horizontally */
     margin: 10px;
     border-radius: 10px;
-   
+    color: black;
   }
   
+  .inside{
+    transition: all 250ms ease-in-out;
+    background-color: #EBECF0;
+    box-shadow: inset -4px -4px 6px -1px white, inset 2px 2px 8px -1px rgba(72, 79, 96, 0.5);
+  }
+
   th {
     padding: 5px; /* Add padding to table headers */
     text-align: center; /* Center text horizontally */
@@ -63,14 +74,41 @@
     font-size: inherit; /* Inherit font size from parent */
     border: 1px solid #000; /* Add border to match cell border */
     border-radius: 5px; /* Add border radius for rounded corners */
-    background-color: transparent; /* Set background color to transparent */
+    background-color: #f1f1f1; /* Set background color to transparent */
     cursor: pointer; /* Show pointer cursor on hover */
     width: 100%;
-    color: white;
+    color: black;
+    border: none;
+
+}
+
+.dropdown:hover {
+  background-color: #e7e7e7;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
 }
 
 .estimate{
     position: absolute;
+    margin-top: 15px;
 }
 
 .project-notes{
@@ -88,66 +126,33 @@
 
   
 /* Button CSS */
-.button-4 {
+button {
   appearance: none;
-  background-color: #d2d3d3;
+  background-color: #EBECF0 ;
   border: 1px solid rgba(27, 31, 35, 0.15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  border-radius: 10px;
   box-sizing: border-box;
-  color: #24292E;
+  color: black;
   cursor: pointer;
   display: inline-block;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
   list-style: none;
-  padding: 6px 16px;
+  padding: 6px 12px;
   position: relative;
-  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
   vertical-align: middle;
-  white-space: nowrap;
   word-wrap: break-word;
   margin: 2px;
   width: 190px;
+  box-shadow: inset -4px -4px 6px -1px white, inset 2px 2px 8px -1px rgba(72, 79, 96, 0.5);
 }
-
-.button-4:hover {
-  background-color: #7e848e;
-  text-decoration: none;
-  transition-duration: 0.1s;
+button:hover {
+  background-color: #e7e7e7;
 }
-
-.button-4:disabled {
-  background-color: #FAFBFC;
-  border-color: rgba(27, 31, 35, 0.15);
-  color: #bec0c2;
-  cursor: default;
+button:active {
+  box-shadow: inset -2px -2px 6px rgba(255, 255, 255, .7),
+              inset -2px -2px 4px rgba(255, 255, 255, .5),
+              inset 2px 2px 2px rgba(255, 255, 255, .075),
+              inset 2px 2px 4px rgba(0, 0, 0, .15);
 }
-
-.button-4:active {
-  background-color: #d2d3d3;
-  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
-  transition: none 0s;
-}
-
-.button-4:focus {
-  outline: 1px transparent;
-}
-
-.button-4:before {
-  display: none;
-}
-
-.button-4:-webkit-details-marker {
-  display: none;
-}
-
-.button-5{
-    background-color: rgb(46, 194, 38);
-}
-
